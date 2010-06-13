@@ -1,0 +1,60 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTodos (20100613071125)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "todos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "due" date, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100613071125')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("todos")[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-06-13 16:12:00) [GET]
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 42ms (View: 38, DB: 0) | 200 OK [http://127.0.0.1/todos/]
+
+
+Processing TodosController#new (for 127.0.0.1 at 2010-06-13 16:12:03) [GET]
+Rendering template within layouts/todos
+Rendering todos/new
+Completed in 125ms (View: 121, DB: 0) | 200 OK [http://127.0.0.1/todos/new]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2010-06-13 16:12:11) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"KqkqoENkdu2dVfSqCXsEsdbouNJQe99H9EOb9FFfW/I=", "todo"=>{"due(1i)"=>"2010", "due(2i)"=>"6", "due(3i)"=>"13", "title"=>"running"}}
+  [4;35;1mTodo Create (0.5ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at", "due") VALUES('2010-06-13 07:12:11', 'running', '2010-06-13 07:12:11', '2010-06-13')[0m
+Redirected to http://127.0.0.1:3000/todos/1
+Completed in 25ms (DB: 1) | 302 Found [http://127.0.0.1/todos]
+
+
+Processing TodosController#show (for 127.0.0.1 at 2010-06-13 16:12:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodo Load (0.2ms)[0m   [0;1mSELECT * FROM "todos" WHERE ("todos"."id" = 1) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todos/1]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-06-13 16:12:13) [GET]
+  [4;35;1mTodo Load (0.8ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 10ms (View: 6, DB: 1) | 200 OK [http://127.0.0.1/todos]
